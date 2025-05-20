@@ -1,0 +1,10 @@
+{
+
+  "id": "welcome",
+  "description": "Flow main",
+  "defaultPage": "welcome-start",
+  "chains": {},
+  "services": {},
+  "types": {},
+  "variables": {}
+}

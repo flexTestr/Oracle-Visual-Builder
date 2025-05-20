@@ -1,0 +1,40 @@
+{
+  "description": "Before Step Navigation Action Chain",
+  "root": "ifValid",
+  "actions": {
+    "ifValid": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.valid !== 'valid']]"
+      },
+      "label": "Validity Check",
+      "outcomes": {
+        "true": "callValidityChain",
+        "false": "callNextStepChain"
+      }
+    },
+    "callValidityChain": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "validateActionChain"
+      }
+    },
+    "callNextStepChain": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "gotoNextStepActionChain",
+        "params": {
+          "event": "{{ $variables.event }}"
+        }
+      },
+      "label": "Next Step"
+    }
+  },
+  "variables": {
+    "event": {
+      "type": "object",
+      "required": true,
+      "input": "fromCaller"
+    }
+  }
+}

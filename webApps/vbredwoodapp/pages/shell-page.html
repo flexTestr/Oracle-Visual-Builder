@@ -1,0 +1,19 @@
+<div id="pageContent">
+  <oj-sp-pillar-theme id="ojspPillarTheme" pillar="gbu" theme="default" mode="mixed"
+    base-appearance-theme="Redwood" ask-oracle="off">
+    <div id="pageContent" class="oj-web-applayout-page">
+      <div class="oj-web-applayout-content-nopad oj-web-spacing oj-web-applayout-max-width">
+      <!-- Displays notification messages -->
+      <oj-messages id="vbDefaultNotifier" display-options.category="none" position="{}" display="general"
+        messages="{{$page.variables.messagesADP}}" on-oj-close="[[$listeners.onMessageClose]]"></oj-messages>
+      <div>
+        <!-- Renders flow content -->
+        <oj-vb-content id="vbRouterContent" class="oj-sm-12" config="[[vbRouterFlow]]"></oj-vb-content>
+        <oj-sp-in-app-navigation
+          navigation-data="[[ $variables.navigationListADP ]]" selection="{{ $page.currentFlow }}"
+          on-sp-selection-action="[[$listeners.inAppNavigationSpSelectionAction]]"></oj-sp-in-app-navigation>
+      </div>
+      </div>
+    </div>
+  </oj-sp-pillar-theme>
+</div>

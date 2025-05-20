@@ -1,0 +1,37 @@
+<div>
+  <oj-sp-dashboard-landing-page id="oj-sp-dashboard-page-1">
+    <oj-bind-if test="[[ $page.variables.kpisArray.length > 0 ]]">
+      <oj-sp-scoreboard slot="kpi" id="oj-sp-scoreboard-1" data="[[$page.variables.kpisADP]]"
+        selection="{{ $page.variables.selectedKpi }}" selection-mode="single"></oj-sp-scoreboard>
+    </oj-bind-if>
+    <oj-switcher id="kpi-switcher" value="[[ $page.variables.selectedKpi ]]">
+      <oj-defer slot="KPI_1_id" >
+        <oj-sp-dashboard-grid layout="hero-plus">
+          <oj-sp-dashboard-panel panel-title="Panel Title 1" slot="">
+            <oj-chart type="pie" style-defaults.pie-inner-radius="0.9" pie-center.label="Center Label"
+              class="oj-sm-flex-initial" data="[[$variables.employeesListSDP2]]" legend.title="departmentId">
+              <template slot="itemTemplate">
+                <oj-chart-item value="[[ $current.data.salary ]]" series-id="[[ $current.data.departmentId ]]"
+                  group-id="[[['Undefined']]]"></oj-chart-item>
+              </template>
+            </oj-chart>
+          </oj-sp-dashboard-panel>
+        </oj-sp-dashboard-grid>
+      </oj-defer>
+      <oj-defer slot="KPI_2_id" >
+        <oj-sp-dashboard-grid>
+          <oj-sp-dashboard-panel panel-title="Panel Title 2" slot="">
+            <oj-chart type="bar" class="oj-sm-flex-initial" data="[[$variables.employeesListSDP]]"
+              y-axis.title="salary" x-axis.title="departmentId" legend.rendered="off">
+              <template slot="itemTemplate">
+                <oj-chart-item value="[[ $current.data.salary ]]" group-id="[[[ $current.data.departmentId ]]]"
+                  series-id="Undefined"></oj-chart-item>
+              </template>
+            </oj-chart>
+            
+          </oj-sp-dashboard-panel>
+        </oj-sp-dashboard-grid>
+      </oj-defer>
+    </oj-switcher>
+  </oj-sp-dashboard-landing-page>
+</div>

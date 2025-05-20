@@ -1,0 +1,91 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "createDepartmentsChainInProgress": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "departments": {
+      "type": "createDepartmentsRequest"
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.createDepartmentsRequest": {
+      "endpoint": "create_Departments",
+      "service": "businessObjects",
+      "path": "request"
+    },
+    "businessObjectsServiceErrorResponseType": {
+      "body": {
+        "status": "string",
+        "title": "string",
+        "o:errorDetails": [
+          {
+            "detail": "string",
+            "o:errorCode": "string"
+          }
+        ]
+      },
+      "status": "number"
+    },
+    "createDepartmentsRequest": {
+      "departmentId": "number",
+      "departmentName": "string",
+      "locationId": "number",
+      "managerId": "string"
+    }
+  },
+  "eventListeners": {
+    "simpleCreateAndEditPageTemplateSpCancel": {
+      "chains": [
+        {
+          "chainId": "SimpleCreateAndEditPageTemplateSpCancelChain"
+        }
+      ]
+    },
+    "simpleCreateAndEditPageTemplateSpGoToParent": {
+      "chains": [
+        {
+          "chainId": "SimpleCreateAndEditPageTemplateSpGoToParentChain"
+        }
+      ]
+    },
+    "simpleCreateAndEditPageTemplateSpPrimaryAction": {
+      "chains": [
+        {
+          "chainId": "createDepartmentsChain",
+          "parameters": {
+            "departments": "[[ $variables.departments ]]"
+          }
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-number": {
+        "path": "ojs/ojinputnumber"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-sp-simple-create-edit": {
+        "path": "oj-sp/simple-create-edit/loader"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      },
+      "oj-validation-group": {
+        "path": "ojs/ojvalidationgroup"
+      }
+    }
+  }
+}

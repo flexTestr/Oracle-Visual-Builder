@@ -1,0 +1,44 @@
+{
+  "description": "",
+  "root": "ifEmpHistoryValid",
+  "actions": {
+    "fireDataProviderEventEmpHistoryTypeVar": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "target": "[[ $page.variables.empHistoryTypeVar ]]",
+        "add": {
+          "data": "{{ $page.variables.currentRow }}"
+        }
+      },
+      "outcomes": {
+        "success": "resetVariablesDrawerOpen"
+      }
+    },
+    "resetVariablesDrawerOpen": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.drawerOpen"
+        ]
+      }
+    },
+    "callComponentEmployementFormShowMessages": {
+      "module": "vb/action/builtin/callComponentMethodAction",
+      "parameters": {
+        "component": "{{ document.getElementById('employement-form') }}",
+        "method": "showMessages"
+      }
+    },
+    "ifEmpHistoryValid": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.empHistoryValid == 'valid' ]]"
+      },
+      "outcomes": {
+        "false": "callComponentEmployementFormShowMessages",
+        "true": "fireDataProviderEventEmpHistoryTypeVar"
+      }
+    }
+  },
+  "variables": {}
+}

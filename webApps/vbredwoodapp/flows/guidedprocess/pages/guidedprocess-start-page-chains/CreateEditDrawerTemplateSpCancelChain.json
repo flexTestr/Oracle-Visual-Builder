@@ -1,0 +1,15 @@
+{
+  "description": "",
+  "root": "resetVariablesDrawerOpen",
+  "actions": {
+    "resetVariablesDrawerOpen": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.drawerOpen"
+        ]
+      }
+    }
+  },
+  "variables": {}
+}

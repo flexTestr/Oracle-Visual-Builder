@@ -1,0 +1,142 @@
+{
+    "displayLabel": "employees",
+    "fields": [
+        {
+            "displayLabel": "Id",
+            "key": true,
+            "name": "id",
+            "oid": "ce77d9a7-b0ff-4782-9932-136490b82475",
+            "required": true,
+            "type": "number",
+            "unique": true
+        },
+        {
+            "displayLabel": "Created",
+            "historyType": "timeCreated",
+            "name": "creationDate",
+            "oid": "a4caab0e-7cc4-40eb-b27a-87f574a09110",
+            "type": "datetime"
+        },
+        {
+            "displayLabel": "Last Updated",
+            "historyType": "timeUpdated",
+            "name": "lastUpdateDate",
+            "oid": "2ee10c65-b9c2-4ef5-80f5-e002a936dea6",
+            "type": "datetime"
+        },
+        {
+            "displayLabel": "Created By",
+            "historyType": "createdBy",
+            "name": "createdBy",
+            "oid": "bac454ea-32ae-42a1-bdd6-e968c1ff81e5",
+            "type": "string"
+        },
+        {
+            "displayLabel": "Last Updated By",
+            "historyType": "updatedBy",
+            "name": "lastUpdatedBy",
+            "oid": "93ce28e2-3414-45e9-8aae-987707ad5c77",
+            "type": "string"
+        },
+        {
+            "displayLabel": "Version Number",
+            "historyType": "versionNumber",
+            "name": "versionNumber",
+            "oid": "6d3a0af1-d468-4365-a727-b5619d88a9d9",
+            "type": "number"
+        },
+        {
+            "displayLabel": "EMPLOYEE_ID",
+            "name": "employeeId",
+            "oid": "7e5d2bb5-b130-4bc1-9bd7-18d303ef295a",
+            "required": true,
+            "type": "number"
+        },
+        {
+            "displayLabel": "FIRST_NAME",
+            "name": "firstName",
+            "oid": "e0c4a24b-9081-4d6f-aead-711ec3566bf4",
+            "required": true,
+            "type": "string"
+        },
+        {
+            "displayLabel": "LAST_NAME",
+            "name": "lastName",
+            "oid": "f7c8648b-38a8-46ea-9805-4479377e114b",
+            "required": true,
+            "type": "string"
+        },
+        {
+            "displayLabel": "EMAIL",
+            "name": "email",
+            "oid": "d259ffd3-ab99-4ba9-b4cb-409898a77e3c",
+            "required": true,
+            "type": "string"
+        },
+        {
+            "displayLabel": "PHONE_NUMBER",
+            "name": "phoneNumber",
+            "oid": "c518bba0-0c1a-4e2d-ae26-a8de9b446851",
+            "required": true,
+            "type": "string"
+        },
+        {
+            "displayLabel": "HIRE_DATE",
+            "name": "hireDate",
+            "oid": "1bc1546b-a3c4-44c9-9346-2bbe6f7713f0",
+            "required": true,
+            "type": "string"
+        },
+        {
+            "displayLabel": "JOB_ID",
+            "name": "jobId",
+            "oid": "ea9a1bd5-6d67-43be-8ef6-c4f355fb23ac",
+            "required": true,
+            "type": "string"
+        },
+        {
+            "displayLabel": "SALARY",
+            "name": "salary",
+            "oid": "349d3126-d4c0-4675-9f7f-8d4f0db53c6a",
+            "required": true,
+            "type": "number"
+        },
+        {
+            "displayLabel": "COMMISSION_PCT",
+            "name": "commissionPct",
+            "oid": "3652bfc8-0df4-46ad-9e8c-d4e2862daeb7",
+            "required": true,
+            "type": "string"
+        },
+        {
+            "displayLabel": "MANAGER_ID",
+            "name": "managerId",
+            "oid": "099aa06e-2a1d-4a41-8e12-148114cdfb47",
+            "required": true,
+            "type": "string"
+        },
+{
+            "displayLabel": "DEPARTMENT_ID",
+            "name": "departmentId",
+            "oid": "9edde1b2-e32d-4ac1-bbed-fbd44635c0ad",
+            "required": true,
+            "type": "number"
+        },
+        {
+            "type": "string",
+            "name": "image",
+            "oid": "86192a4c-71ce-4e75-98e8-e2351853facc",
+            "displayLabel": "image"
+        }        ,
+        {
+            "type": "number",
+            "name": "rating",
+            "oid": "d5c69316-0885-4ed7-9be3-fe6f57b09494",
+            "displayLabel": "rating"
+        }
+    ],
+    "hidden": false,
+    "name": "Employees",
+    "oid": "5727859e-72c0-46fb-babb-60b11f8f3917",
+    "setupData": true
+}

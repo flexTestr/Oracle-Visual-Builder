@@ -1,0 +1,13 @@
+{
+  "description": "",
+  "root": "navigateToSearchCreateDepartment",
+  "actions": {
+    "navigateToSearchCreateDepartment": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "search-create-department"
+      }
+    }
+  },
+  "variables": {}
+}

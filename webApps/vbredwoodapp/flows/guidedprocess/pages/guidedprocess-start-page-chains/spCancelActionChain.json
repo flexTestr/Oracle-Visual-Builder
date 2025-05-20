@@ -1,0 +1,38 @@
+{
+  "description": "",
+  "variables": {
+    "detail": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  },
+  "root": "updateVariable",
+  "actions": {
+    "updateVariable": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.cancel": {
+          "source": true,
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "navigateToWelcomeWelcomeStart"
+      },
+      "description": "update Cancel variable",
+      "label": "update Cancel variable"
+    },
+    "navigateToWelcomeWelcomeStart": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "target": "parent",
+        "flow": "welcome",
+        "page": "welcome-start"
+      },
+      "@dt": {
+        "targetType": "flow"
+      }
+    }
+  }
+}

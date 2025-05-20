@@ -1,0 +1,16 @@
+{
+  "description": "",
+  "root": "fireNotification",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Do something Here",
+        "type": "confirmation",
+        "displayMode": "transient"
+      }
+    }
+  },
+  "variables": {}
+}

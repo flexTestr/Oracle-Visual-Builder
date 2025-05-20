@@ -1,0 +1,120 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "employeesListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_Employees",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallEmployeesResponse"
+      }
+    },
+    "employeesListSDP2": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_Employees",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallEmployeesResponse2"
+      }
+    },
+    "kpisADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "data": "{{ $page.variables.kpisArray }}",
+        "itemType": "object",
+        "keyAttributes": "id"
+      }
+    },
+    "kpisArray": {
+      "type": "object[]",
+      "defaultValue": [
+        {
+          "id": "KPI_1_id",
+          "title": "Employees",
+          "metric": "100 Employees",
+          "meta": "Metadata 1"
+        },
+        {
+          "id": "KPI_2_id",
+          "title": "Departments",
+          "metric": "15 Departments",
+          "meta": "Metadata 2"
+        }
+      ]
+    },
+    "selectedKpi": {
+      "type": "string",
+      "defaultValue": "KPI_1_id"
+    }
+
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getallEmployeesResponse": {
+      "endpoint": "getall_Employees",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getallEmployeesResponse2": {
+      "endpoint": "getall_Employees",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "actionType": {
+      "label": "string",
+      "display": "string"
+    },
+    "getallEmployeesResponse": {
+      "items": [
+        {
+          "departmentId": "number",
+          "id": "number",
+          "salary": "number"
+        }
+      ]
+    },
+    "getallEmployeesResponse2": {
+      "items": [
+        {
+          "departmentId": "number",
+          "id": "number",
+          "salary": "number"
+        }
+      ]
+    }
+  },
+  "eventListeners": {
+  },
+  "imports": {
+    "components": {
+      "oj-chart": {
+        "path": "ojs/ojchart"
+      },
+      "oj-chart-item": {
+        "path": "ojs/ojchart"
+      },
+      "oj-defer": {
+        "path": "ojs/ojdefer"
+      },
+      "oj-sp-dashboard-grid": {
+        "path": "oj-sp/dashboard-grid/loader"
+      },
+      "oj-sp-dashboard-landing-page": {
+        "path": "oj-sp/dashboard-landing-page/loader"
+      },
+      "oj-sp-dashboard-panel": {
+        "path": "oj-sp/dashboard-panel/loader"
+      },
+      "oj-sp-scoreboard": {
+        "path": "oj-sp/scoreboard/loader"
+      },
+      "oj-switcher": {
+        "path": "ojs/ojswitcher"
+      }
+
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "variables": {
+    "event": {
+      "type": "object",
+      "input": "fromCaller"
+    }
+  },
+  "root": "navigateToSelf",
+  "actions": {
+    "navigateToSelf": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "[[ $application.currentPage.id ]]",
+        "params": {
+          "currentStep": "[[ $chain.variables.event.detail.nextStep ]]"
+        },
+        "history": "push"
+      }
+    }
+  }
+}

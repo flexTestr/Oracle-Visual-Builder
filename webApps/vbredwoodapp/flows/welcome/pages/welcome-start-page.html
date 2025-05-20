@@ -1,0 +1,22 @@
+<oj-sp-welcome-page
+  illustration-foreground="https://static.oracle.com/cdn/fnd/gallery/2207.2.0/images/illust-welcome-banner-fg-02.png"
+  illustration-background="https://static.oracle.com/cdn/fnd/gallery/2207.2.0/images/illust-welcome-banner-bg-01.png"
+  page-title="Redwood Sample"
+  overline-text="Note: Search and actions cannot be present simultaneously. If you configure search, it takes precedence over actions."
+  description-text="Collection of different Redwood Templates for demo" display-options.mobile-image="off"
+  background-color="dark-lilac">
+  <oj-list-view data="[[$variables.employeesListSDP]]" display="card" scroll-policy-options.max-count="10"
+    scroll-policy-options.fetch-size="5">
+    <template slot="itemTemplate">
+      <li class="oj-sm-12 oj-md-6 oj-lg-4">
+        <oj-sp-object-card badge.text="[[ $current.data.rating.toString() ]]" badge.status="neutral"
+          badge.style="strong" primary-text="[[ $current.data.firstName + ' ' + $current.data.lastName ]]"
+          secondary-text="[[ $current.data.email + '@random.com' ]]" display-options.horizontal-gauge="off"
+          display-options.circular-gauge="off" label="[[ $current.data.phoneNumber ]]"
+          image.src="[[ $current.data.image ]]"
+          emphasized="true" primary-actions='[{"id":"Congratulate","label":"Congratulate","icon":"oj-icon"}]'></oj-sp-object-card>
+      </li>
+    </template>
+  </oj-list-view>
+  <oj-input-search slot="search" raw-value="{{ $variables.searchVariable }}"></oj-input-search>
+</oj-sp-welcome-page>

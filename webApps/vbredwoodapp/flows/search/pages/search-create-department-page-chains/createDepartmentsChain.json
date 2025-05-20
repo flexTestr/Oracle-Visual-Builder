@@ -1,0 +1,166 @@
+{
+  "variables": {
+    "departments": {
+      "type": "createDepartmentsRequest",
+      "input": "fromCaller",
+      "defaultValue": "[[ $page.variables.departments ]]"
+    },
+    "saveFailureResult": {
+      "type": "businessObjectsServiceErrorResponseType"
+    },
+    "errorMessage": {
+      "type": "string"
+    }
+  },
+  "root": "markCreateStarted",
+  "actions": {
+    "markCreateStarted": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.createDepartmentsChainInProgress": {
+          "source": true
+        }
+      },
+      "outcomes": {
+        "success": "validateDepartments"
+      },
+      "description": "Sets the progress variable to true",
+      "label": "Mark Create in progress"
+    },
+    "validateDepartments": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "flow:validateFormChain",
+        "params": {
+          "validationGroupId": "departments-validation-group--571152084-1"
+        }
+      },
+      "outcomes": {
+        "success": "isFormValid"
+      },
+      "label": "Validate",
+      "description": "Validates Departments form"
+    },
+    "isFormValid": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.validateDepartments === true ]]"
+      },
+      "outcomes": {
+        "true": "saveDepartments",
+        "false": "markCreateEnded"
+      },
+      "label": "Is Form valid",
+      "description": "Tests if form passed validation"
+    },
+    "fireSuccessNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "summary": "Departments saved",
+        "message": "Departments record successfully created",
+        "type": "confirmation",
+        "displayMode": "transient"
+      },
+      "outcomes": {
+        "success": "navigateBack"
+      },
+      "description": "Fires a notification event about successful save",
+      "label": "Fire save success event"
+    },
+    "assignFailureResult": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.saveFailureResult": {
+          "source": "[[ $chain.results.saveDepartments ]]"
+        }
+      },
+      "outcomes": {
+        "success": "testFailureDetails"
+      },
+      "description": "Assigns REST call failure result to a local variable",
+      "label": "Assign failure result"
+    },
+    "testFailureDetails": {
+      "module": "vb/action/builtin/ifAction",
+      "outcomes": {
+        "true": "handleDetailedErrorMessage",
+        "false": "handleDefaultErrorMessage"
+      },
+      "parameters": {
+        "condition": "[[ $variables.saveFailureResult.body['o:errorDetails'][0] ]]"
+      },
+      "description": "Tests if the REST call failure output contains error detail message",
+      "label": "Test failure details"
+    },
+    "handleDetailedErrorMessage": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "outcomes": {
+        "success": "fireErrorNotification"
+      },
+      "parameters": {
+        "$variables.errorMessage": {
+          "source": "[[ $variables.saveFailureResult.body['o:errorDetails'][0].detail ]]"
+        }
+      },
+      "description": "Extracts detail error message from the REST call failure result",
+      "label": "Assign detailed error message"
+    },
+    "handleDefaultErrorMessage": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "outcomes": {
+        "success": "fireErrorNotification"
+      },
+      "parameters": {
+        "$variables.errorMessage": {
+          "source": "[[ 'Could not create new Departments: status ' + $variables.saveFailureResult.status ]]"
+        }
+      },
+      "description": "Builds default error message",
+      "label": "Assign default error message"
+    },
+    "fireErrorNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "summary": "Save failed",
+        "message": "[[ $variables.errorMessage ]]",
+        "type": "error",
+        "displayMode": "persist"
+      },
+      "description": "Fires a notification event about failed save",
+      "label": "Fire save failed event",
+      "outcomes": {
+        "success": "markCreateEnded"
+      }
+    },
+    "saveDepartments": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "businessObjects/create_Departments",
+        "body": "[[ $variables.departments ]]"
+      },
+      "description": "Call REST creating new Departments record",
+      "label": "Save Departments record",
+      "outcomes": {
+        "success": "fireSuccessNotification",
+        "failure": "assignFailureResult"
+      }
+    },
+    "markCreateEnded": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.createDepartmentsChainInProgress": {
+          "source": false
+        }
+      },
+      "description": "Sets the progress variable to false",
+      "label": "Mark Create done"
+    },
+    "navigateBack": {
+      "module": "vb/action/builtin/navigateBackAction",
+      "outcomes": {
+        "success": "markCreateEnded"
+      }
+    }
+  },
+  "description": "Saves changes and creates new Departments record."
+}

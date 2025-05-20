@@ -1,0 +1,214 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "cancel": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "currentRow": {
+      "type": "empHistoryType"
+    },
+    "currentStep": {
+      "type": "string",
+      "defaultValue": "",
+      "input": "fromUrl"
+    },
+    "dirtyDataFlag": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "drawerOpen": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "empHistoryTypeVar": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "empHistoryType",
+        "keyAttributes": "@index"
+      }
+    },
+    "empHistoryValid": {
+      "type": "string"
+    },
+    "valid": {
+      "type": "string"
+    }
+
+  },
+  "metadata": {},
+  "types": {
+    "empHistoryType": {
+      "address": "string",
+      "description": "string",
+      "end": "string",
+      "name": "string",
+      "reference": "string",
+      "start": "string",
+      "title": "string"
+    },
+    "step": {
+      "id": "string",
+      "title": "string",
+      "description": "string",
+      "display": "string",
+      "status": "string",
+      "timestamp": "string",
+      "optional": "boolean"
+    }
+
+  },
+  "eventListeners": {
+    "collectionContainerSpAdd": {
+      "chains": [
+        {
+          "chainId": "addNewEmploymentButtonActionChain"
+        }
+      ]
+    },
+    "collectionContainerSpDelete": {
+      "chains": [
+        {
+          "chainId": "CollectionContainerSpDeleteChain"
+        }
+      ]
+    },
+    "createEditDrawerTemplateSpCancel": {
+      "chains": [
+        {
+          "chainId": "CreateEditDrawerTemplateSpCancelChain"
+        }
+      ]
+    },
+    "createEditDrawerTemplateSpPrimaryAction": {
+      "chains": [
+        {
+          "chainId": "CreateEditDrawerTemplateSpPrimaryActionChain"
+        }
+      ]
+    },
+    "guidedProcessPageTemplateSpPrimaryAction": {
+      "chains": [
+        {
+          "chainId": "GuidedProcessPageTemplateSpPrimaryActionChain"
+        }
+      ]
+    },
+    "onConfirmNoOjAction": {
+      "chains": [
+        {
+          "chainId": "dialogResponseActionChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}",
+            "response": "NO"
+          }
+        }
+      ]
+    },
+    "onConfirmYesOjAction": {
+      "chains": [
+        {
+          "chainId": "dialogResponseActionChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}",
+            "response": "YES"
+          }
+        }
+      ]
+    },
+    "onSpBeforeStepNavigate": {
+      "preventDefault": "true",
+      "chains": [
+        {
+          "chainId": "spBeforeStepNavigate",
+          "parameters": {
+            "event": "{{ $event }}"
+          }
+        }
+      ]
+    },
+    "onSpCancel": {
+      "chains": [
+        {
+          "chainId": "spCancelActionChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}"
+          }
+        }
+      ]
+    },
+    "vbBeforeExit": {
+      "chains": [
+        {
+          "chainId": "checkBeforeExitActionChain",
+          "parameters": {}
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "chainId": "firePageLayoutEventActionChain"
+        }
+      ]
+    }
+
+  },
+  "imports": {
+    "components": {
+
+      "oj-checkboxset": {
+        "path": "ojs/ojcheckboxset"
+      },
+      "oj-combobox-one": {
+        "path": "ojs/ojselectcombobox"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-date": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-label-value": {
+        "path": "ojs/ojlabelvalue"
+      },
+      "oj-option": {
+        "path": "ojs/ojoption"
+      },
+      "oj-radioset": {
+        "path": "ojs/ojradioset"
+      },
+      "oj-select-single": {
+        "path": "ojs/ojselectsingle"
+      },
+      "oj-sp-guided-process": {
+        "path": "oj-sp/guided-process/loader"
+      },
+      "oj-sp-message-unsaved-changes": {
+        "path": "oj-sp/message-unsaved-changes/loader"
+      },
+      "oj-table": {
+        "path": "ojs/ojtable"
+      },
+      "oj-text-area": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-validation-group": {
+        "path": "ojs/ojvalidationgroup"
+      },
+      "oj-drawer-popup": {
+        "path": "ojs/ojdrawerpopup"
+      },
+      "oj-sp-create-edit-drawer-template": {
+        "path": "oj-sp/create-edit-drawer-template/loader"
+      },
+      "oj-sp-collection-container": {
+        "path": "oj-sp/collection-container/loader"
+      }
+    }
+  }
+}

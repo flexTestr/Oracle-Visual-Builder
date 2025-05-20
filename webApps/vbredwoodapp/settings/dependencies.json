@@ -1,0 +1,26 @@
+{
+  "component-dependencies": {
+    "oj-sp": {
+      "version": "2304.0.1",
+      "components": {
+        "in-app-navigation": "2304.0.1",
+        "welcome-page": "2304.0.1",
+        "object-card": "2304.0.1",
+        "smart-search-page": "2304.0.1",
+        "simple-create-edit": "2304.0.1",
+        "message-unsaved-changes": "2304.0.1",
+        "dashboard-landing-page": "2304.0.1",
+        "scoreboard": "2304.0.1",
+        "dashboard-grid": "2304.0.1",
+        "dashboard-panel": "2304.0.1",
+        "guided-process": "2304.0.1"
+      }
+    },
+    "oj-dynamic": {
+      "version": "13.1.1",
+      "components": {
+        "form": "13.1.1"
+      }
+    }
+  }
+ }
